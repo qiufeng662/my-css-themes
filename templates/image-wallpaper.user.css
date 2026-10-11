@@ -1,0 +1,39 @@
+/* ==UserStyle==
+@name           Custom Wallpaper Starter (edit the target domain)
+@namespace      personal.css.wallpaper-starter
+@version        0.1.0
+@description    A site-specific image background template; replace example.com before use.
+@author         Personal
+==/UserStyle== */
+
+/* IMPORTANT: Change example.com to the actual target website.
+   Copy this theme to a per-site file and adapt its selectors if needed. */
+@-moz-document domain("example.com") {
+  :root {
+    --wallpaper-image: none; /* url("https://example.com/image.jpg") */
+    --wallpaper-fallback: linear-gradient(120deg, #f7ecff, #e5f4ff);
+    --wallpaper-position: center center;
+    --wallpaper-size: cover;
+    --wallpaper-tint: rgba(255,255,255,0.22);
+  }
+
+  html {
+    min-height: 100%;
+    background: var(--wallpaper-fallback) fixed !important;
+  }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(var(--wallpaper-tint), var(--wallpaper-tint)),
+                var(--wallpaper-image),
+                var(--wallpaper-fallback) !important;
+    background-repeat: no-repeat !important;
+    background-position: center, var(--wallpaper-position), center !important;
+    background-size: cover, var(--wallpaper-size), cover !important;
+    background-attachment: fixed !important;
+  }
+
+  /* IMPORTANT: Many sites paint opaque backgrounds on their app containers.
+     This starter deliberately does not clear those layers automatically:
+     adjust site-specific containers carefully and test text contrast first. */
+}
