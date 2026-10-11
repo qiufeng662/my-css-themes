@@ -1,231 +1,64 @@
 /* ==UserStyle==
-@name           ChatGPT Dreamy Glass Theme
-@namespace      chatgpt.custom.theme
-@version        1.1.0
-@description    梦幻渐变 + 透明玻璃感 ChatGPT 主题（适配网页版）
-@author         OpenAI
+@name           ChatGPT Lite - Dreamy Gradient (Lite)
+@namespace      github.com/qiufeng662/my-css-themes/chatgpt/dreamy-glass
+@version        2.0.0
+@description    Lightweight ChatGPT theme for Edge and Stylus. No blur, animations, or expensive general selectors.
+@author         qiufeng662
+@homepageURL    https://github.com/qiufeng662/my-css-themes
+@updateURL      https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/dreamy-glass.user.css
 ==/UserStyle== */
 
+/* Install ONE ChatGPT theme at a time. Switch other ChatGPT styles off first. */
 @-moz-document domain("chatgpt.com"), domain("chat.openai.com") {
   :root {
-    /* Optional wallpaper: replace none with url("https://.../wallpaper.jpg"). */
-    --cg-wallpaper-image: none;
-    --cg-wallpaper-position: center center;
-    --cg-wallpaper-size: cover;
-    --cg-wallpaper-overlay: rgba(250, 245, 255, 0.30);
-    --cg-bg-1: #fff7fb;
-    --cg-bg-2: #f4f0ff;
-    --cg-bg-3: #eef7ff;
-    --cg-panel: rgba(255, 255, 255, 0.62);
-    --cg-panel-strong: rgba(255, 255, 255, 0.78);
-    --cg-sidebar: rgba(248, 242, 255, 0.62);
-    --cg-border: rgba(180, 162, 220, 0.24);
-    --cg-text: #2f2a3a;
-    --cg-text-soft: #6e6780;
-    --cg-accent: #9b8cff;
-    --cg-accent-2: #7fd1ff;
-    --cg-user-bubble: linear-gradient(135deg, rgba(214, 198, 255, 0.90), rgba(191, 231, 255, 0.90));
-    --cg-hover: rgba(255,255,255,0.45);
-    --cg-shadow: 0 10px 30px rgba(156, 145, 200, 0.18);
-    --cg-blur: blur(18px);
-    --cg-radius-lg: 20px;
-    --cg-radius-md: 16px;
-    --cg-radius-sm: 12px;
+    --lite-wallpaper: linear-gradient(130deg, #fce4f1 0%, #e5ddff 47%, #dff5ff 100%);
+    --lite-overlay: rgba(255, 255, 255, 0.10);
+    --lite-sidebar: rgba(255, 255, 255, 0.90);
+    --lite-card: rgba(255, 255, 255, 0.86);
+    --lite-border: rgba(155, 137, 194, 0.18);
+
+    /* Site-specific surface tokens; no global button/form restyling. */
+    --main-surface-primary: transparent;
+    --sidebar-surface-primary: var(--lite-sidebar);
+    --sidebar-surface-secondary: rgba(245, 241, 253, 0.94);
   }
 
-  html, body {
-    background:
-      radial-gradient(circle at 15% 20%, rgba(255, 220, 245, 0.55), transparent 30%),
-      radial-gradient(circle at 85% 18%, rgba(210, 225, 255, 0.55), transparent 28%),
-      radial-gradient(circle at 50% 80%, rgba(225, 210, 255, 0.45), transparent 26%),
-      linear-gradient(135deg, var(--cg-bg-1) 0%, var(--cg-bg-2) 48%, var(--cg-bg-3) 100%) !important;
-    background-attachment: fixed !important;
-    color: var(--cg-text) !important;
+  html {
+    background-color: #eeeaf6 !important;
   }
 
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-      linear-gradient(var(--cg-wallpaper-overlay), var(--cg-wallpaper-overlay)),
-      var(--cg-wallpaper-image),
-      linear-gradient(rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-      radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 35%),
-      radial-gradient(circle at bottom right, rgba(255,255,255,0.18), transparent 35%);
-    z-index: 0;
-    background-position: center, var(--cg-wallpaper-position), center, center;
-    background-size: cover, var(--cg-wallpaper-size), cover, cover;
-    background-repeat: no-repeat;
+  body {
+    background-color: #eeeaf6 !important;
+    background-image: linear-gradient(var(--lite-overlay), var(--lite-overlay)), var(--lite-wallpaper) !important;
+    background-size: cover, cover !important;
+    background-position: center center, center center !important;
+    background-repeat: no-repeat, no-repeat !important;
+    background-attachment: fixed, fixed !important;
   }
 
-  #__next, main, [role="main"] {
-    position: relative;
-    z-index: 1;
-    background: transparent !important;
+  #__next, #root, main, [role="main"],
+  .bg-token-main-surface-primary {
+    background-color: transparent !important;
   }
 
-  /* 主体容器 */
-  .bg-token-main-surface-primary,
-  .bg-token-sidebar-surface-primary,
-  .bg-token-main-surface-secondary,
-  .bg-token-sidebar-surface-secondary,
-  [class*="bg-token-main-surface"],
-  [class*="bg-token-sidebar-surface"] {
-    background: transparent !important;
+  [data-testid="sidebar"], #stage-slideover-sidebar {
+    background-color: var(--lite-sidebar) !important;
+    border-right: 1px solid var(--lite-border) !important;
   }
 
-  /* 左侧边栏 */
-  nav,
-  aside,
-  [data-testid="sidebar"],
-  [class*="sidebar"] {
-    background: var(--cg-sidebar) !important;
-    -webkit-backdrop-filter: var(--cg-blur);
-    backdrop-filter: var(--cg-blur);
-    border-right: 1px solid var(--cg-border) !important;
-    box-shadow: inset -1px 0 0 rgba(255,255,255,0.24);
+  [data-message-author-role="assistant"] {
+    background-color: var(--lite-card) !important;
+    border-radius: 12px !important;
   }
 
-  /* 内容区域玻璃卡片感 */
-  article,
-  section,
-  form,
-  .rounded-2xl,
-  .rounded-3xl,
-  [class*="rounded-"] {
-    border-color: var(--cg-border);
+  [data-message-author-role="user"] .bg-token-message-surface {
+    background-color: rgba(224, 210, 251, 0.90) !important;
   }
 
-  /* 中央消息区 */
-  main [class*="text-token-text-primary"],
-  main,
-  [role="main"] {
-    color: var(--cg-text) !important;
+  #composer-background, [data-testid="composer"] {
+    background-color: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid var(--lite-border) !important;
   }
 
-  /* 消息块 */
-  [data-message-author-role="assistant"] > div,
-  [data-message-author-role="user"] > div {
-    border-radius: var(--cg-radius-lg) !important;
-  }
-
-  [data-message-author-role="assistant"] > div {
-    background: rgba(255, 255, 255, 0.34) !important;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.34) !important;
-    box-shadow: 0 4px 18px rgba(173, 165, 210, 0.10);
-  }
-
-  [data-message-author-role="user"] > div {
-    background: var(--cg-user-bubble) !important;
-    color: #332f42 !important;
-    border: 1px solid rgba(255,255,255,0.36) !important;
-    box-shadow: 0 6px 18px rgba(160, 154, 220, 0.15);
-  }
-
-  /* 输入框 */
-  form,
-  form > div,
-  [class*="composer"],
-  [class*="input"] {
-    border-radius: 22px !important;
-  }
-
-  textarea,
-  form textarea,
-  [contenteditable="true"] {
-    color: var(--cg-text) !important;
-    caret-color: var(--cg-accent) !important;
-  }
-
-  form:has(textarea),
-  div:has(> textarea),
-  div:has([contenteditable="true"]) {
-    background: var(--cg-panel) !important;
-    -webkit-backdrop-filter: var(--cg-blur);
-    backdrop-filter: var(--cg-blur);
-    border: 1px solid rgba(255,255,255,0.35) !important;
-    box-shadow: var(--cg-shadow) !important;
-  }
-
-  /* 按钮 */
-  button {
-    border-radius: 14px !important;
-    transition: all 0.18s ease !important;
-  }
-
-  button:hover {
-    background: var(--cg-hover) !important;
-    transform: translateY(-1px);
-  }
-
-  /* 新建聊天 / 侧栏项目 */
-  a, button, div[role="button"] {
-    color: var(--cg-text) !important;
-  }
-
-  nav a:hover,
-  nav button:hover,
-  aside a:hover,
-  aside button:hover,
-  [data-testid="history-item"]:hover {
-    background: rgba(255,255,255,0.42) !important;
-    border-radius: 14px !important;
-  }
-
-  /* 代码块 */
-  pre, code {
-    border-radius: 14px !important;
-  }
-
-  pre {
-    background: rgba(247, 245, 255, 0.72) !important;
-    border: 1px solid rgba(190, 180, 230, 0.25) !important;
-  }
-
-  code {
-    background: rgba(255,255,255,0.42) !important;
-  }
-
-  /* 表格 / 引用 */
-  table, blockquote {
-    background: rgba(255,255,255,0.30) !important;
-    border-radius: 14px !important;
-    border-color: rgba(186, 176, 225, 0.28) !important;
-  }
-
-  /* 顶部区域 */
-  header {
-    background: rgba(255,255,255,0.18) !important;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-  }
-
-  /* 次级文字 */
-  .text-token-text-secondary,
-  .text-token-text-tertiary,
-  [class*="text-token-text-secondary"],
-  [class*="text-token-text-tertiary"] {
-    color: var(--cg-text-soft) !important;
-  }
-
-  /* 滚动条 */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(181,168,255,0.72), rgba(140,214,255,0.68));
-    border-radius: 999px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.12);
-  }
+  /* Performance: intentionally NO backdrop-filter, :has(), or animations. */
 }
