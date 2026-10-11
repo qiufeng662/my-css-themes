@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Unified Lite — Cosmic Nebula
 @namespace      github.com/qiufeng662/my-css-themes/chatgpt/wallpaper-nebula
-@version        2.1.0
+@version        2.2.0
 @description    Unified lightweight ChatGPT theme. Matched sidebar, soft reading cards and integrated composer. Edge + Stylus.
 @author         qiufeng662
 @homepageURL    https://github.com/qiufeng662/my-css-themes
@@ -34,6 +34,11 @@
     --sidebar-surface-secondary: var(--mt-sidebar-secondary);
     --composer-surface-primary: var(--mt-composer);
     --message-surface: var(--mt-user);
+
+    /* Extra fallbacks for newer ChatGPT layout variants. */
+    --color-background-panel: var(--mt-sidebar);
+    --color-background-composer-primary: var(--mt-composer);
+    --token-sidebar-surface-primary: var(--mt-sidebar);
   }
 
   /* One calm visual canvas. A flat wash is cheaper than real-time blur. */
@@ -62,7 +67,8 @@
   /* Sidebar: softly tinted to belong to the same palette as the wallpaper. */
   #stage-slideover-sidebar,
   [data-testid="sidebar"],
-  .bg-token-sidebar-surface-primary {
+  .bg-token-sidebar-surface-primary,
+  nav, aside {
     background-color: var(--mt-sidebar) !important;
   }
 
@@ -123,8 +129,17 @@
     background-image: none !important;
   }
 
-  #thread-bottom-container .bg-token-main-surface-primary {
+  #thread-bottom-container .bg-token-main-surface-primary,
+  #thread-bottom-container .bg-surface-primary,
+  #thread-bottom-container .bg-token-main-surface-secondary {
     background-color: transparent !important;
+  }
+
+  /* Replace the site's white bottom gradient, if present. */
+  #thread-bottom-container [class*="bg-gradient-to-t"] {
+    background-image: linear-gradient(
+      to top, var(--mt-page), rgba(255,255,255,0)
+    ) !important;
   }
 
   /* Prompt area: glass-like appearance via opacity, not expensive blur. */
