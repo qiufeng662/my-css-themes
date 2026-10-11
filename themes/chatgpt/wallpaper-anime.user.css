@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Unified Lite — Anime Night Sky
 @namespace      github.com/qiufeng662/my-css-themes/chatgpt/wallpaper-anime
-@version        2.2.0
+@version        2.3.0
 @description    Unified lightweight ChatGPT theme. Matched sidebar, soft reading cards and integrated composer. Edge + Stylus.
 @author         qiufeng662
 @homepageURL    https://github.com/qiufeng662/my-css-themes
@@ -9,7 +9,7 @@
 ==/UserStyle== */
 
 /*
- * Unified Lite v2.1: designed around an October 2026 ChatGPT screenshot.
+ * Unified Lite v2.3: designed around an October 2026 ChatGPT screenshot.
  * Install only ONE ChatGPT theme at a time. Recommended: ChatGPT Light mode.
  * No backdrop-filter, filter blur, :has(), global button overrides, or animations.
  */
@@ -167,4 +167,88 @@
       border-radius: 13px !important;
     }
   }
+
+  /* v2.3: ChatGPT can redefine surface variables on body, not only :root. */
+  body,
+  #stage-slideover-sidebar,
+  #sidebar {
+    --sidebar-surface-primary: var(--mt-sidebar) !important;
+    --sidebar-surface-secondary: var(--mt-sidebar-secondary) !important;
+    --composer-surface-primary: var(--mt-composer) !important;
+  }
+
+  /* Fix the white sidebar title/header in the user's October screenshot. */
+  #sidebar-header,
+  [data-testid="sidebar-header"],
+  #stage-slideover-sidebar header,
+  #sidebar header,
+  [data-testid="sidebar"] header,
+  #stage-slideover-sidebar > div:first-child,
+  #stage-sidebar-tiny-bar {
+    background-color: var(--mt-sidebar) !important;
+    border-color: var(--mt-border) !important;
+  }
+
+  /* Some releases paint the sticky bottom by CLASS rather than ID. */
+  .thread-bottom-container,
+  #thread-bottom-container {
+    --main-surface-primary: transparent !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(
+      to bottom, rgba(250,245,255,0), rgba(242,235,250,.35)
+    ) !important;
+  }
+
+  .thread-bottom-container::before,
+  .thread-bottom-container::after,
+  #thread-bottom-container::before,
+  #thread-bottom-container::after {
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Only clear the bottom dock's native white layout surfaces. */
+  .thread-bottom-container > div,
+  #thread-bottom-container > div,
+  .thread-bottom-container [class*="bg-token-main-surface-"],
+  #thread-bottom-container [class*="bg-token-main-surface-"] {
+    background-color: transparent !important;
+  }
+
+  .thread-bottom-container [class*="bg-gradient-to-"],
+  #thread-bottom-container [class*="bg-gradient-to-"],
+  .thread-bottom-container [class*="from-token-main-surface"],
+  #thread-bottom-container [class*="from-token-main-surface"] {
+    background-image: none !important;
+  }
+
+  /* Keep the actual prompt box an opaque readable surface. */
+  #composer-background,
+  form[data-type="unified-composer"] #composer-background {
+    background-color: var(--mt-composer) !important;
+  }
+
+  /* Some current assistant turns wrap Markdown in .agent-turn or .text-message:
+     style the reading content instead of relying on the outer role node. */
+  main .agent-turn .markdown,
+  main [data-message-author-role="assistant"] .markdown,
+  main [data-turn] .text-message .markdown,
+  main [data-message-author-role="assistant"] .prose {
+    background-color: var(--mt-chat) !important;
+    border: 1px solid rgba(153,130,193,.12) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 2px 8px rgba(69,55,94,.045) !important;
+    padding: 14px 18px !important;
+  }
+
+  @media (max-width: 640px) {
+    main .agent-turn .markdown,
+    main [data-message-author-role="assistant"] .markdown,
+    main [data-turn] .text-message .markdown,
+    main [data-message-author-role="assistant"] .prose {
+      padding: 10px 12px !important;
+    }
+  }
+
 }
