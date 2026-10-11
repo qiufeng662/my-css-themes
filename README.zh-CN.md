@@ -17,6 +17,28 @@
 
 **提示：** 同一个网站的多套完整主题不要同时启用，避免 CSS 规则互相覆盖。
 
+## 默认壁纸（4 张）
+
+仓库已经收录以下四张**默认壁纸**，均为 1672 × 941 分辨率的 WebP 文件，可直接供 Edge + Stylus 使用。
+
+| 梦幻粉彩渐变 | 动漫月夜星空 |
+|:---:|:---:|
+| [![梦幻粉彩渐变](assets/wallpapers/pastel-gradient.webp)](assets/wallpapers/pastel-gradient.webp) | [![动漫月夜星空](assets/wallpapers/anime-night-sky.webp)](assets/wallpapers/anime-night-sky.webp) |
+| [Pastel Gradient](assets/wallpapers/pastel-gradient.webp) | [Anime Night Sky](assets/wallpapers/anime-night-sky.webp) |
+
+| 晨雾森林 | 紫蓝星云 |
+|:---:|:---:|
+| [![晨雾森林](assets/wallpapers/misty-forest.webp)](assets/wallpapers/misty-forest.webp) | [![紫蓝星云](assets/wallpapers/cosmic-nebula.webp)](assets/wallpapers/cosmic-nebula.webp) |
+| [Misty Forest](assets/wallpapers/misty-forest.webp) | [Cosmic Nebula](assets/wallpapers/cosmic-nebula.webp) |
+
+在 CSS 主题中使用图片的 **GitHub Raw 直链**，例如：
+
+```css
+--cg-wallpaper-image: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp");
+```
+
+查看 [完整四图预览与全部直链](assets/wallpapers/README.md)。
+
 ## 自定义背景图片
 
 可以使用自己的图片、插画、摄影作品当作背景，也能叠加渐变、调整透明度和背景位置。
