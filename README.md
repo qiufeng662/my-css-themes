@@ -17,6 +17,28 @@ A growing collection of website-specific themes, reusable CSS starters, and wall
 
 **Tip:** Enable only one full-page theme per website at a time to prevent conflicting styles.
 
+## Default wallpapers (4)
+
+These four original wallpapers are included in the repository as **your default image collection**. All images are 1672 × 941 WebP files, ready for use in Edge + Stylus.
+
+| Pastel Gradient | Anime Night Sky |
+|:---:|:---:|
+| [![Pastel Gradient](assets/wallpapers/pastel-gradient.webp)](assets/wallpapers/pastel-gradient.webp) | [![Anime Night Sky](assets/wallpapers/anime-night-sky.webp)](assets/wallpapers/anime-night-sky.webp) |
+| [Pastel Gradient](assets/wallpapers/pastel-gradient.webp) | [Anime Night Sky](assets/wallpapers/anime-night-sky.webp) |
+
+| Misty Forest | Cosmic Nebula |
+|:---:|:---:|
+| [![Misty Forest](assets/wallpapers/misty-forest.webp)](assets/wallpapers/misty-forest.webp) | [![Cosmic Nebula](assets/wallpapers/cosmic-nebula.webp)](assets/wallpapers/cosmic-nebula.webp) |
+| [Misty Forest](assets/wallpapers/misty-forest.webp) | [Cosmic Nebula](assets/wallpapers/cosmic-nebula.webp) |
+
+Use their **GitHub Raw** URLs as CSS background images, for example:
+
+```css
+--cg-wallpaper-image: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp");
+```
+
+See the [wallpaper gallery and all four URLs](assets/wallpapers/README.md).
+
 ## Custom wallpapers and images
 
 Yes — you can replace the background with your own photo, illustration, or artwork. The Dreamy Glass theme includes an optional `--cg-wallpaper-image` setting.
