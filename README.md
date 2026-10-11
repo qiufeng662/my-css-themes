@@ -8,14 +8,23 @@ A growing collection of website-specific themes, reusable CSS starters, and wall
 
 > These styles change appearance in your browser only. They do not modify the website or its underlying functionality. Some selectors may need maintenance when a website changes.
 
-## Themes
+## Install a theme in one click (Edge + Stylus)
 
-| Website | Theme | Description |
+**First:** Open ChatGPT in Edge, set Appearance to **Light**, and **disable the old ChatGPT theme** in Stylus (especially the previous Dreamy Glass v1). Do not enable multiple full-site themes at once.
+
+With [Stylus installed](https://github.com/openstyles/stylus), open a **direct UserCSS link** below. Stylus should display an installation page; click **Install style**, return to ChatGPT, and refresh. If the installer does not open, see the [step-by-step instructions](docs/使用指南.md).
+
+| Theme | Direct Stylus installation | Source |
 | --- | --- | --- |
-| ChatGPT | [Warm Cream](themes/chatgpt/warm-cream.user.css) | Calm cream-colored reading environment. |
-| ChatGPT | [Dreamy Glass](themes/chatgpt/dreamy-glass.user.css) | Soft lavender–blue gradients and glass-like panels. **Custom wallpaper supported.** |
+| Dreamy Gradient / 梦幻紫色渐变 | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/dreamy-glass.user.css) | [CSS](themes/chatgpt/dreamy-glass.user.css) |
+| Pastel Gradient / 粉彩渐变壁纸 | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-pastel.user.css) | [CSS](themes/chatgpt/wallpaper-pastel.user.css) |
+| Anime Night Sky / 月夜星空 | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-anime.user.css) | [CSS](themes/chatgpt/wallpaper-anime.user.css) |
+| Misty Forest / 晨雾森林 | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-forest.user.css) | [CSS](themes/chatgpt/wallpaper-forest.user.css) |
+| Cosmic Nebula / 紫蓝星云 | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-nebula.user.css) | [CSS](themes/chatgpt/wallpaper-nebula.user.css) |
 
-**Tip:** Enable only one full-page theme per website at a time to prevent conflicting styles.
+**Switch wallpapers:** Click the Stylus extension icon on ChatGPT, turn the active ChatGPT theme **off**, then turn the theme you want **on**. You can install all five but keep **only one enabled at a time**.
+
+**Performance fix:** The original purple Dreamy Glass theme was replaced with a **Lite** implementation. It removes large-area backdrop blur, expensive `:has()` selectors, generic button animations, and unnecessary styling overrides. The appearance may be simpler, and performance still depends on your Edge device and ChatGPT version. Browser-level testing has not been performed.
 
 ## Default wallpapers (4)
 
@@ -31,31 +40,13 @@ These four original wallpapers are included in the repository as **your default 
 | [![Misty Forest](assets/wallpapers/misty-forest.webp)](assets/wallpapers/misty-forest.webp) | [![Cosmic Nebula](assets/wallpapers/cosmic-nebula.webp)](assets/wallpapers/cosmic-nebula.webp) |
 | [Misty Forest](assets/wallpapers/misty-forest.webp) | [Cosmic Nebula](assets/wallpapers/cosmic-nebula.webp) |
 
-Use their **GitHub Raw** URLs as CSS background images, for example:
-
-```css
---cg-wallpaper-image: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp");
-```
-
-See the [wallpaper gallery and all four URLs](assets/wallpapers/README.md).
+No CSS editing is necessary: choose one of the standalone [wallpaper themes](#install-a-theme-in-one-click-edge--stylus) above. The images remain available separately as [GitHub Raw files](assets/wallpapers/README.md), so they can also be reused on other websites.
 
 ## Custom wallpapers and images
 
 Yes — you can replace the background with your own photo, illustration, or artwork. The Dreamy Glass theme includes an optional `--cg-wallpaper-image` setting.
 
-Edit this line in [Dreamy Glass](themes/chatgpt/dreamy-glass.user.css):
-
-```css
---cg-wallpaper-image: none;
-```
-
-Replace it with:
-
-```css
---cg-wallpaper-image: url("https://example.com/my-wallpaper.jpg");
-```
-
-Use an actual, directly accessible image URL (JPG, PNG, WebP, etc.). The default `none` keeps the original gradient. For your own image, you may also upload it to `assets/wallpapers/` in this **public** repository and use its GitHub Raw URL. Do **not** upload private photos or sensitive images to a public repository.
+For ChatGPT, simply install one of the four wallpaper themes above—**no manual URL replacement is required**. To use a different personal image in a custom theme, change `--lite-wallpaper` in a **copy** of one of the wallpaper CSS files to `url("https://example.com/my-wallpaper.jpg")`. The URL must point directly to a publicly accessible image. Since this repository is public, avoid committing sensitive photos.
 
 For another website, start from [the reusable wallpaper template](templates/image-wallpaper.user.css), **change `example.com` to the intended domain**, and adapt the selectors to that site. There is no one-size-fits-all CSS for every website.
 
