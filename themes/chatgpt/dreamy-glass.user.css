@@ -1,13 +1,18 @@
 /* ==UserStyle==
 @name           ChatGPT Dreamy Glass Theme
 @namespace      chatgpt.custom.theme
-@version        1.0.0
+@version        1.1.0
 @description    梦幻渐变 + 透明玻璃感 ChatGPT 主题（适配网页版）
 @author         OpenAI
 ==/UserStyle== */
 
 @-moz-document domain("chatgpt.com"), domain("chat.openai.com") {
   :root {
+    /* Optional wallpaper: replace none with url("https://.../wallpaper.jpg"). */
+    --cg-wallpaper-image: none;
+    --cg-wallpaper-position: center center;
+    --cg-wallpaper-size: cover;
+    --cg-wallpaper-overlay: rgba(250, 245, 255, 0.30);
     --cg-bg-1: #fff7fb;
     --cg-bg-2: #f4f0ff;
     --cg-bg-3: #eef7ff;
@@ -34,6 +39,7 @@
       radial-gradient(circle at 85% 18%, rgba(210, 225, 255, 0.55), transparent 28%),
       radial-gradient(circle at 50% 80%, rgba(225, 210, 255, 0.45), transparent 26%),
       linear-gradient(135deg, var(--cg-bg-1) 0%, var(--cg-bg-2) 48%, var(--cg-bg-3) 100%) !important;
+    background-attachment: fixed !important;
     color: var(--cg-text) !important;
   }
 
@@ -43,10 +49,15 @@
     inset: 0;
     pointer-events: none;
     background:
+      linear-gradient(var(--cg-wallpaper-overlay), var(--cg-wallpaper-overlay)),
+      var(--cg-wallpaper-image),
       linear-gradient(rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
       radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 35%),
       radial-gradient(circle at bottom right, rgba(255,255,255,0.18), transparent 35%);
     z-index: 0;
+    background-position: center, var(--cg-wallpaper-position), center, center;
+    background-size: cover, var(--cg-wallpaper-size), cover, cover;
+    background-repeat: no-repeat;
   }
 
   #__next, main, [role="main"] {
