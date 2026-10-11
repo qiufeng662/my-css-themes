@@ -8,6 +8,8 @@ A growing collection of website-specific themes, reusable CSS starters, and wall
 
 > These styles change appearance in your browser only. They do not modify the website or its underlying functionality. Some selectors may need maintenance when a website changes.
 
+> **Unified Lite v2.2 (October 2026):** The theme now brings sidebar, conversation reading panels, user bubbles, top chrome and the bottom composer into a matching palette. It replaces hard white regions with soft, translucent colors, without costly backdrop blur. These rules were adjusted using a user-provided screenshot; real-browser behavior still needs confirmation after installation. **Existing Stylus themes do not necessarily update immediately when GitHub changes: disable or update the installed style before comparing.**
+
 ## Install a theme in one click (Edge + Stylus)
 
 **First:** Open ChatGPT in Edge, set Appearance to **Light**, and **disable the old ChatGPT theme** in Stylus (especially the previous Dreamy Glass v1). Do not enable multiple full-site themes at once.
