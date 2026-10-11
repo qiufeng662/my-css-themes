@@ -1,23 +1,50 @@
-# My CSS Themes · 个人网页主题库
+# My CSS Themes
 
-面向 **Microsoft Edge + Stylus** 的个人网页 CSS 主题收藏与开发仓库。不限于 ChatGPT：可以针对任意网站创建独立样式，也可以创建适用于大多数网站的通用配色方案。
+**Personal CSS themes for the web — designed with Microsoft Edge and Stylus in mind.**
 
-> CSS 主题只改变网页在本机浏览器中的视觉效果，不改变网站后端。建议优先使用站点专用主题；通用主题应保持保守，避免误伤复杂网页功能。
+[English](README.md) | [简体中文](README.zh-CN.md)
 
-## 已有主题
+A growing collection of website-specific themes, reusable CSS starters, and wallpaper customization notes. **Not limited to ChatGPT:** any website can have its own folder and styles.
 
-| 适用网站 | 主题 | 文件 | 简介 |
-|---|---|---|---|
-| ChatGPT | Warm Cream 奶油米色 | [查看 CSS](themes/chatgpt/warm-cream.user.css) | 温暖浅色、柔和阅读体验 |
-| ChatGPT | Dreamy Glass 梦幻渐变 | [查看 CSS](themes/chatgpt/dreamy-glass.user.css) | 浅粉紫蓝渐变、磨砂玻璃效果 |
+> These styles change appearance in your browser only. They do not modify the website or its underlying functionality. Some selectors may need maintenance when a website changes.
 
-**注意：** 两款 ChatGPT 主题不要同时启用，否则可能互相覆盖。
+## Themes
 
-## 目录结构
+| Website | Theme | Description |
+| --- | --- | --- |
+| ChatGPT | [Warm Cream](themes/chatgpt/warm-cream.user.css) | Calm cream-colored reading environment. |
+| ChatGPT | [Dreamy Glass](themes/chatgpt/dreamy-glass.user.css) | Soft lavender–blue gradients and glass-like panels. **Custom wallpaper supported.** |
+
+**Tip:** Enable only one full-page theme per website at a time to prevent conflicting styles.
+
+## Custom wallpapers and images
+
+Yes — you can replace the background with your own photo, illustration, or artwork. The Dreamy Glass theme includes an optional `--cg-wallpaper-image` setting.
+
+Edit this line in [Dreamy Glass](themes/chatgpt/dreamy-glass.user.css):
+
+```css
+--cg-wallpaper-image: none;
+```
+
+Replace it with:
+
+```css
+--cg-wallpaper-image: url("https://example.com/my-wallpaper.jpg");
+```
+
+Use an actual, directly accessible image URL (JPG, PNG, WebP, etc.). The default `none` keeps the original gradient. For your own image, you may also upload it to `assets/wallpapers/` in this **public** repository and use its GitHub Raw URL. Do **not** upload private photos or sensitive images to a public repository.
+
+For another website, start from [the reusable wallpaper template](templates/image-wallpaper.user.css), **change `example.com` to the intended domain**, and adapt the selectors to that site. There is no one-size-fits-all CSS for every website.
+
+See the [full wallpaper guide](docs/CUSTOM_WALLPAPERS.md) for examples, opacity/readability tips, image hosting, and known limitations.
+
+## Repository layout
 
 ```text
 my-css-themes/
 ├── README.md
+├── README.zh-CN.md
 ├── themes/
 │   ├── chatgpt/
 │   │   ├── warm-cream.user.css
@@ -25,33 +52,37 @@ my-css-themes/
 │   └── universal/
 │       └── README.md
 ├── templates/
-│   └── site-theme.user.css
+│   ├── site-theme.user.css
+│   └── image-wallpaper.user.css
+├── assets/
+│   └── wallpapers/
+│       └── README.md
 └── docs/
+    ├── CUSTOM_WALLPAPERS.md
     └── 使用指南.md
 ```
 
-未来可按网站域名继续扩展，例如 `themes/github/`、`themes/google/`、`themes/bilibili/`；每个文件夹可存多套不同风格。
+New websites can be added under `themes/github/`, `themes/bilibili/`, etc. The `universal` folder is reserved for carefully tested cross-site styles; **no universal theme has been verified yet**.
 
-## 安装
+## Install in Microsoft Edge
 
-1. 使用 Microsoft Edge 安装 [Stylus 扩展](https://github.com/openstyles/stylus)。
-2. 在本仓库打开想安装的 `.user.css` 文件。
-3. 在 Stylus 中新建 UserCSS 样式，并粘贴完整内容后保存（不同 Stylus 版本的菜单可能稍有不同）。
-4. 刷新对应网站；在 Stylus 扩展中单独启用、禁用或编辑样式。
+1. Install [Stylus](https://github.com/openstyles/stylus) in Microsoft Edge.
+2. Open a `.user.css` file in this repository and copy its **entire content**.
+3. Create a new UserCSS style in Stylus, paste the CSS, and save.
+4. Refresh the target website.
+5. Use Stylus to enable, disable, or edit themes independently.
 
-参见 [使用指南](docs/使用指南.md)。
+Depending on your Stylus version, the exact editor controls may differ. See [中文安装指南](docs/使用指南.md).
 
-## 开发约定
+## Contributing and maintenance guidelines
 
-- 每个网站一个目录；每个主题一个 `.user.css` 文件。
-- 使用 `@-moz-document domain("example.com")` 等域名限制来避免影响不相关网站。
-- 统一保留 UserStyle 元数据，维护 `@version`、`@name` 和 `@description`。
-- 避免通配符 `*`、覆盖所有按钮、输入框等过宽规则。
-- 保持文本对比度、可点击性、键盘焦点和网页原有功能。
-- 对于新网站，复制 [站点主题模板](templates/site-theme.user.css) 后修改域名和 CSS。
-- 主题是否适配需在目标网站实际测试；网站更新后可能需要维护。
-- GitHub 只存代码，不自动确保浏览器已安装样式随仓库同步更新。
+- Keep one site per folder and one theme per `.user.css` file.
+- Scope website-specific rules using `@-moz-document domain("example.com")`, and avoid broad selectors where possible.
+- Maintain UserStyle metadata (`@name`, `@namespace`, `@version`, `@description`).
+- Test accessibility, text readability, input controls, menus, and dialogs before considering a theme stable.
+- CSS is site-dependent: visual consistency across **all** websites is not guaranteed.
+- Committing changes to GitHub does **not** automatically update styles already installed in your browser.
 
-## 关于公开仓库
+## Privacy and attribution
 
-本仓库当前为公开仓库。请勿提交账号凭据、Token、私人网址或其他敏感内容。此项目是个人主题收藏库，不属于 Microsoft、OpenAI 或 Stylus 官方项目。
+This repository is **public**. Do not commit passwords, tokens, personal URLs, or private images. The project is independently maintained and is not affiliated with Microsoft, OpenAI, or Stylus.
