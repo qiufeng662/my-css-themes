@@ -1,54 +1,35 @@
-# Custom image wallpapers / 自定义背景图片
+# Custom Wallpaper Guide / 自定义壁纸指南
 
-[English README](../README.md) · [中文 README](../README.zh-CN.md)
+[English](../README.md) | [简体中文](../README.zh-CN.md)
 
-## English
+## Switch the four built-in wallpapers (no CSS editing)
 
-You can apply your own image, artwork, or wallpaper using **CSS + Microsoft Edge + Stylus**.
+With Microsoft Edge + Stylus installed, open the direct `.user.css` link:
 
-### ChatGPT Dreamy Glass
+| Wallpaper | Install |
+| --- | --- |
+| Pastel Gradient | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-pastel.user.css) |
+| Anime Night Sky | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-anime.user.css) |
+| Misty Forest | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-forest.user.css) |
+| Cosmic Nebula | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-nebula.user.css) |
 
-1. Open [Dreamy Glass](../themes/chatgpt/dreamy-glass.user.css) in Stylus.
-2. Find `--cg-wallpaper-image: none;`.
-3. Change it to `--cg-wallpaper-image: url("https://your-host.example/wallpaper.webp");`.
-4. Refresh ChatGPT. Keep the default `none` to use the original gradient.
-5. Use `--cg-wallpaper-position`, `--cg-wallpaper-size`, and `--cg-wallpaper-overlay` to tune appearance. The overlay alpha (the final number from 0 to 1) adjusts readability.
+Switch by toggling **off** the current ChatGPT theme in the Stylus extension, then toggling **on** the desired theme. Only one should be enabled per site.
 
-Use a directly accessible image URL, not an HTML gallery/share page. The link must load in your browser, and browser privacy/CSP policies may affect particular image hosts.
+To use another image, clone a wallpaper theme and replace the `--lite-wallpaper` value with `url("https://your-domain.example/photo.webp")`. Adjust `--lite-overlay` to make foreground text readable. Links must point directly to an image and be browser-accessible.
 
-### Other websites
+The old `--cg-wallpaper-image` option belonged to an earlier heavy version of Dreamy Glass. In Lite v2 it has been superseded by standalone themes using `--lite-wallpaper`.
 
-Start from [image-wallpaper.user.css](../templates/image-wallpaper.user.css), replace `example.com` with the site's domain, then adjust its page/container CSS. A generic body background cannot always penetrate opaque application layers.
+The lighter themes eliminate `backdrop-filter` and complex `:has()` selectors. They have **not** been visually or performance-tested on every ChatGPT build, and may require updates as the site changes.
 
-### Hosting options
+## 中文：如何换壁纸
 
-- Public URL from an image host you control.
-- Upload non-sensitive, appropriately licensed image files to `assets/wallpapers/` on GitHub, then use the file's `raw.githubusercontent.com` URL.
-- Data URL embedded in CSS for small images (increases file size).
-- Local `file://` images may be blocked by browser security restrictions and are less portable.
+**不必写 CSS，也不必复制图片链接。**
 
-**Privacy:** This repository is public. Do not upload personal or sensitive photos. Respect the original image's license.
+1. 打开 [中文安装步骤](使用指南.md)，先关闭旧版紫色主题。
+2. 点上表想使用的壁纸的 **Install** 链接，选择 **Install style / 安装样式**。
+3. 在 ChatGPT 页面打开 Stylus，先关闭原主题，再打开新主题，刷新。
+4. 四个壁纸主题可以全部安装，但**同一时间只开启一个**。
 
-## 简体中文
+如需使用第五张自己提供的图片，请复制一份壁纸 CSS，把 `--lite-wallpaper` 的地址换成可直连的 JPG/PNG/WebP 图片。仓库公开时不要上传私人或敏感照片。
 
-通过 **Edge + Stylus + CSS**，可以将自己的图片设为网页背景。
-
-### ChatGPT 梦幻玻璃主题
-
-1. 在 Stylus 中打开 [Dreamy Glass](../themes/chatgpt/dreamy-glass.user.css)。
-2. 找到 `--cg-wallpaper-image: none;`。
-3. 修改为 `--cg-wallpaper-image: url("https://图片直链地址/wallpaper.webp");`。
-4. 刷新 ChatGPT。改回 `none` 即恢复默认渐变。
-5. 调节 `--cg-wallpaper-position`（图片位置）、`--cg-wallpaper-size`（缩放）和 `--cg-wallpaper-overlay`（遮罩透明度）。
-
-链接应直接指向 JPG/PNG/WebP 等图片，不能只是图片分享网页。某些图片网站可能禁止外部引用或限制浏览器加载。
-
-### 其他网站
-
-使用 [通用壁纸开发模板](../templates/image-wallpaper.user.css)，先替换 `example.com`，再按目标网站的具体结构调整。**不是所有网站只改一个 CSS 属性就能透明显示背景**，某些网站还需要修改页面容器样式。
-
-### 如何存储图片
-
-可以使用已有的公共图片直链，或者将非隐私、已获授权的图片上传到仓库 `assets/wallpapers/` 后获取 GitHub Raw 链接。较小的图片也可以使用 data URL 嵌入 CSS；本机 file URL 受安全限制，不一定能用。
-
-**提醒：仓库为公开状态，切勿上传私人照片、敏感信息或无授权作品。**
+其他网页请使用 [专属域名壁纸模板](../templates/image-wallpaper.user.css)，网站布局需要单独适配。
