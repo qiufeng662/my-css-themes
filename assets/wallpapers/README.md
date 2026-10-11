@@ -1,30 +1,23 @@
 # Default Wallpapers / 默认壁纸
 
-[English README](../../README.md) | [中文 README](../../README.zh-CN.md)
+[English README](../../README.md) | [中文 README](../../README.zh-CN.md) | [Edge 安装步骤](../../docs/使用指南.md)
 
-Four original default wallpapers for the owner's personal CSS theme collection. All images are **1672 × 941**, optimized as **WebP** for website backgrounds.
+**Four original default wallpapers**, 1672 × 941 WebP, for the owner's Edge + Stylus CSS collection.
 
-| Wallpaper | Preview | Direct image URL |
+| Wallpaper | Preview | Install ChatGPT Lite theme |
 | --- | --- | --- |
-| Pastel Gradient / 梦幻粉彩渐变 | ![Pastel Gradient](pastel-gradient.webp) | [Raw WebP](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp) |
-| Anime Night Sky / 动漫月夜星空 | ![Anime Night Sky](anime-night-sky.webp) | [Raw WebP](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/anime-night-sky.webp) |
-| Misty Forest / 晨雾森林 | ![Misty Forest](misty-forest.webp) | [Raw WebP](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/misty-forest.webp) |
-| Cosmic Nebula / 紫蓝星云 | ![Cosmic Nebula](cosmic-nebula.webp) | [Raw WebP](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/cosmic-nebula.webp) |
+| Pastel Gradient / 粉彩渐变 | ![Pastel Gradient](pastel-gradient.webp) | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-pastel.user.css) |
+| Anime Night Sky / 月夜星空 | ![Anime Night Sky](anime-night-sky.webp) | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-anime.user.css) |
+| Misty Forest / 晨雾森林 | ![Misty Forest](misty-forest.webp) | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-forest.user.css) |
+| Cosmic Nebula / 紫蓝星云 | ![Cosmic Nebula](cosmic-nebula.webp) | [Install](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-nebula.user.css) |
 
-## Usage / 使用方式
+## Image URLs / 图片直链
 
-For [ChatGPT Dreamy Glass](../../themes/chatgpt/dreamy-glass.user.css), change `--cg-wallpaper-image` from `none` to one of the following:
+- [Pastel Gradient](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp)
+- [Anime Night Sky](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/anime-night-sky.webp)
+- [Misty Forest](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/misty-forest.webp)
+- [Cosmic Nebula](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/cosmic-nebula.webp)
 
-```css
-/* Choose ONE wallpaper / 四选一 */
---cg-wallpaper-image: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp");
-/* --cg-wallpaper-image: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/anime-night-sky.webp"); */
-/* --cg-wallpaper-image: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/misty-forest.webp"); */
-/* --cg-wallpaper-image: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/cosmic-nebula.webp"); */
-```
+Switch themes with Stylus, **one ChatGPT theme on at a time**. / 在 Stylus 中切换，**同一时间只启用一个 ChatGPT 主题**。
 
-The wallpaper library does not automatically change browser styles; you must enable and configure the corresponding CSS theme in Stylus.
-
-此处的四张壁纸是仓库默认资源，但不会自动改变浏览器背景。请在 Stylus 中选择并启用对应 CSS 主题。
-
-The repository is **public**. Keep future uploads non-sensitive and appropriate for redistribution. / 仓库为公开状态，请勿在未来上传私人或敏感照片。
+For different websites, adapt [the wallpaper template](../../templates/image-wallpaper.user.css). The repository is public, so avoid uploading sensitive personal photos. / 其他网站需分别适配，公开仓库不要存隐私图片。
