@@ -1,0 +1,102 @@
+/* ==UserStyle==
+@name           ChatGPT · 奶油米色轻渐变
+@namespace      custom.chatgpt.warm-cream
+@version        1.0.0
+@description    ChatGPT 网页轻暖主题：奶油色聊天区、米杏色侧边栏、柔和输入框与用户消息气泡。建议搭配 ChatGPT 浅色模式。
+@author         Custom theme
+==/UserStyle== */
+
+/*
+  使用方式：在 Stylus 中新建 UserCSS 样式并粘贴完整内容；
+  也可使用 Stylus 打开本地 .user.css 文件进行安装。
+  仅适用于 chatgpt.com / chat.openai.com，不修改其他网站。
+  请在 ChatGPT 设置中选择「浅色」外观。
+*/
+
+@-moz-document domain("chatgpt.com"), domain("chat.openai.com") {
+  /* ========== 可自定义的调色板：只修改这里即可换配色 ========== */
+  html:not(.dark):not([data-theme="dark"]) {
+    --cream-page:       #F8F4ED;   /* 主背景 */
+    --cream-page-top:   #FCF9F4;   /* 渐变顶端 */
+    --cream-sidebar:    #EEE7DC;   /* 左侧栏 */
+    --cream-sidebar-2:  #E6DED1;   /* 侧边栏悬停和层次 */
+    --cream-composer:   #FFFCF7;   /* 输入框 */
+    --cream-bubble:     #EDE3D6;   /* 用户消息气泡 */
+    --cream-text:       #302E2A;   /* 正文 */
+    --cream-muted:      #706A61;   /* 次级文字 */
+    --cream-border:     #DED2C2;   /* 边线 */
+    --cream-accent:     #637D70;   /* 柔和鼠尾草绿 */
+
+    /* ChatGPT 的常用语义色彩变量（尽可能保留原生交互） */
+    --bg-primary:                  var(--cream-page) !important;
+    --bg-secondary:                #F0E9DF !important;
+    --bg-tertiary:                 #E8E0D4 !important;
+    --main-surface-primary:        var(--cream-page) !important;
+    --main-surface-secondary:      #F1EAE0 !important;
+    --main-surface-tertiary:       #E9E1D6 !important;
+    --sidebar-surface-primary:     var(--cream-sidebar) !important;
+    --sidebar-surface-secondary:   var(--cream-sidebar-2) !important;
+    --sidebar-surface-tertiary:    #DCD0BF !important;
+    --composer-surface-primary:    var(--cream-composer) !important;
+    --composer-surface:            var(--cream-composer) !important;
+    --message-surface:             var(--cream-bubble) !important;
+    --bg-elevated-primary:         #FFFCF7 !important;
+    --text-primary:                var(--cream-text) !important;
+    --text-secondary:              var(--cream-muted) !important;
+    --text-tertiary:               #908679 !important;
+    --color-surface:               var(--cream-page) !important;
+    --color-surface-secondary:     #F0E9DF !important;
+    --color-background-panel:      var(--cream-sidebar) !important;
+  }
+
+  /* 聊天主体：柔和、几乎不可察觉的暖色渐变 */
+  html:not(.dark):not([data-theme="dark"]) body {
+    background-color: var(--cream-page) !important;
+    color: var(--cream-text);
+  }
+  html:not(.dark):not([data-theme="dark"]) main {
+    background-color: var(--cream-page) !important;
+    background-image:
+      radial-gradient(ellipse at 85% 8%, rgba(227, 215, 197, .21), transparent 52%),
+      linear-gradient(165deg, var(--cream-page-top), var(--cream-page) 65%) !important;
+  }
+
+  /* ChatGPT 的部分版本使用工具类直接绘制底色 */
+  html:not(.dark):not([data-theme="dark"]) .bg-token-main-surface-primary,
+  html:not(.dark):not([data-theme="dark"]) .bg-token-bg-primary {
+    background-color: var(--cream-page) !important;
+  }
+  html:not(.dark):not([data-theme="dark"]) .bg-token-sidebar-surface-primary {
+    background-color: var(--cream-sidebar) !important;
+  }
+  html:not(.dark):not([data-theme="dark"]) .bg-token-sidebar-surface-secondary {
+    background-color: var(--cream-sidebar-2) !important;
+  }
+
+  /* 输入编辑区：保留原生按钮、语音、上传附件等交互 */
+  html:not(.dark):not([data-theme="dark"]) #composer-background,
+  html:not(.dark):not([data-theme="dark"]) [data-testid="composer"] {
+    background-color: var(--cream-composer) !important;
+    border: 1px solid var(--cream-border) !important;
+    box-shadow: 0 5px 22px rgba(88, 67, 46, .075) !important;
+  }
+  html:not(.dark):not([data-theme="dark"]) #prompt-textarea {
+    color: var(--cream-text) !important;
+    caret-color: var(--cream-accent) !important;
+  }
+
+  /* 提高消息区辨识度，但不改变所有消息的 DOM 结构 */
+  html:not(.dark):not([data-theme="dark"]) [data-message-author-role="user"] .bg-token-message-surface,
+  html:not(.dark):not([data-theme="dark"]) [data-message-author-role="user"] [class*="bg-token-message-surface"] {
+    background-color: var(--cream-bubble) !important;
+    border: 1px solid rgba(150, 124, 95, .14);
+  }
+
+  /* 代码继续以区块呈现，避免和纸张底色融为一体 */
+  html:not(.dark):not([data-theme="dark"]) pre:not([class*="bg-"]) {
+    border: 1px solid rgba(114, 102, 85, .12);
+    border-radius: 12px;
+  }
+
+  /* 提醒：没有隐藏元素或修改页面布局，关闭 Stylus 即可恢复 */
+}
