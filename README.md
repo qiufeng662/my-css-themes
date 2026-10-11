@@ -44,7 +44,7 @@ No CSS editing is necessary: choose one of the standalone [wallpaper themes](#in
 
 ## Custom wallpapers and images
 
-Yes — you can replace the background with your own photo, illustration, or artwork. The Dreamy Glass theme includes an optional `--cg-wallpaper-image` setting.
+Yes — you can replace the background with your own photo, illustration, or artwork. For ChatGPT, the four lightweight wallpaper themes above already include the image URL: just install one and switch it on.
 
 For ChatGPT, simply install one of the four wallpaper themes above—**no manual URL replacement is required**. To use a different personal image in a custom theme, change `--lite-wallpaper` in a **copy** of one of the wallpaper CSS files to `url("https://example.com/my-wallpaper.jpg")`. The URL must point directly to a publicly accessible image. Since this repository is public, avoid committing sensitive photos.
 
