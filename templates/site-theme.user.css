@@ -1,0 +1,23 @@
+/* ==UserStyle==
+@name           Site Theme Starter
+@namespace      personal.css.example
+@version        0.1.0
+@description    Starter theme for a specific website (change example.com first)
+@author         Personal
+==/UserStyle== */
+
+/* 安装前务必替换 example.com 为真实网站域名 */
+@-moz-document domain("example.com") {
+  :root {
+    --theme-page: #f6f2fb;
+    --theme-text: #2d2a35;
+    --theme-accent: #9175cc;
+  }
+
+  html {
+    background-color: var(--theme-page);
+    color: var(--theme-text);
+  }
+
+  /* 请依据实际网页结构添加精确选择器，不要直接覆盖所有按钮或表单。 */
+}
