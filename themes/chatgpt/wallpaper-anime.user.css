@@ -1,0 +1,64 @@
+/* ==UserStyle==
+@name           ChatGPT Lite - Anime Night Sky (Lite)
+@namespace      github.com/qiufeng662/my-css-themes/chatgpt/wallpaper-anime
+@version        2.0.0
+@description    Lightweight ChatGPT theme for Edge and Stylus. No blur, animations, or expensive general selectors.
+@author         qiufeng662
+@homepageURL    https://github.com/qiufeng662/my-css-themes
+@updateURL      https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-anime.user.css
+==/UserStyle== */
+
+/* Install ONE ChatGPT theme at a time. Switch other ChatGPT styles off first. */
+@-moz-document domain("chatgpt.com"), domain("chat.openai.com") {
+  :root {
+    --lite-wallpaper: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/anime-night-sky.webp");
+    --lite-overlay: rgba(255, 255, 255, 0.17);
+    --lite-sidebar: rgba(255, 255, 255, 0.90);
+    --lite-card: rgba(255, 255, 255, 0.86);
+    --lite-border: rgba(155, 137, 194, 0.18);
+
+    /* Site-specific surface tokens; no global button/form restyling. */
+    --main-surface-primary: transparent;
+    --sidebar-surface-primary: var(--lite-sidebar);
+    --sidebar-surface-secondary: rgba(245, 241, 253, 0.94);
+  }
+
+  html {
+    background-color: #eeeaf6 !important;
+  }
+
+  body {
+    background-color: #eeeaf6 !important;
+    background-image: linear-gradient(var(--lite-overlay), var(--lite-overlay)), var(--lite-wallpaper) !important;
+    background-size: cover, cover !important;
+    background-position: center center, center center !important;
+    background-repeat: no-repeat, no-repeat !important;
+    background-attachment: fixed, fixed !important;
+  }
+
+  #__next, #root, main, [role="main"],
+  .bg-token-main-surface-primary {
+    background-color: transparent !important;
+  }
+
+  [data-testid="sidebar"], #stage-slideover-sidebar {
+    background-color: var(--lite-sidebar) !important;
+    border-right: 1px solid var(--lite-border) !important;
+  }
+
+  [data-message-author-role="assistant"] {
+    background-color: var(--lite-card) !important;
+    border-radius: 12px !important;
+  }
+
+  [data-message-author-role="user"] .bg-token-message-surface {
+    background-color: rgba(224, 210, 251, 0.90) !important;
+  }
+
+  #composer-background, [data-testid="composer"] {
+    background-color: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid var(--lite-border) !important;
+  }
+
+  /* Performance: intentionally NO backdrop-filter, :has(), or animations. */
+}
