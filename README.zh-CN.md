@@ -8,14 +8,23 @@
 
 > CSS 只改变本地浏览器中的显示效果，不修改网站的后端功能。网站更新后，部分选择器可能需要维护。
 
-## 现有主题
+## 一键安装和切换（Edge + Stylus）
 
-| 网站 | 主题 | 说明 |
+**先关闭旧版紫色 4 号 CSS：** 打开 ChatGPT，点击浏览器右上角 Stylus 图标，将旧版 Dreamy Glass 关闭。建议把 ChatGPT 的官方外观调整为**浅色**。
+
+下表直接点击 **安装主题**，Stylus 正常情况下会打开安装页面，点击 **Install style / 安装样式**，然后刷新 ChatGPT 即可。若没有弹出安装页面，请看 [图文式操作步骤](docs/使用指南.md)。
+
+| 主题 | 直接安装 | 源文件 |
 | --- | --- | --- |
-| ChatGPT | [Warm Cream 奶油米色](themes/chatgpt/warm-cream.user.css) | 柔和、适合长时间阅读的暖色主题 |
-| ChatGPT | [Dreamy Glass 梦幻渐变玻璃](themes/chatgpt/dreamy-glass.user.css) | 浅紫蓝渐变、玻璃面板，**支持自定义壁纸** |
+| Dreamy Gradient / 梦幻紫色渐变 | [安装主题](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/dreamy-glass.user.css) | [查看 CSS](themes/chatgpt/dreamy-glass.user.css) |
+| Pastel Gradient / 粉彩渐变壁纸 | [安装主题](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-pastel.user.css) | [查看 CSS](themes/chatgpt/wallpaper-pastel.user.css) |
+| Anime Night Sky / 月夜星空 | [安装主题](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-anime.user.css) | [查看 CSS](themes/chatgpt/wallpaper-anime.user.css) |
+| Misty Forest / 晨雾森林 | [安装主题](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-forest.user.css) | [查看 CSS](themes/chatgpt/wallpaper-forest.user.css) |
+| Cosmic Nebula / 紫蓝星云 | [安装主题](https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-nebula.user.css) | [查看 CSS](themes/chatgpt/wallpaper-nebula.user.css) |
 
-**提示：** 同一个网站的多套完整主题不要同时启用，避免 CSS 规则互相覆盖。
+**怎样切换：** 在 ChatGPT 页面打开 Stylus，先关闭当前主题，再打开另一套主题。**同一时间只开启一套 ChatGPT 主题**。
+
+**卡顿优化：** 之前的紫色主题存在多处性能负担较高的 CSS（大范围磨砂模糊、`:has()` 复杂匹配、所有按钮动画等）。现已替换为 **Lite 轻量版**，四张壁纸也使用相同轻量结构。它们不再使用实时磨砂模糊，玻璃效果会有所简化。尚未在你的 Edge 上实际运行测试，若仍卡顿，请关闭主题并反馈截图。
 
 ## 默认壁纸（4 张）
 
@@ -31,31 +40,13 @@
 | [![晨雾森林](assets/wallpapers/misty-forest.webp)](assets/wallpapers/misty-forest.webp) | [![紫蓝星云](assets/wallpapers/cosmic-nebula.webp)](assets/wallpapers/cosmic-nebula.webp) |
 | [Misty Forest](assets/wallpapers/misty-forest.webp) | [Cosmic Nebula](assets/wallpapers/cosmic-nebula.webp) |
 
-在 CSS 主题中使用图片的 **GitHub Raw 直链**，例如：
-
-```css
---cg-wallpaper-image: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp");
-```
-
-查看 [完整四图预览与全部直链](assets/wallpapers/README.md)。
+**不需要自己修改 CSS：** 直接在上方选择需要的壁纸主题安装即可。四张独立图片也保存在 [壁纸目录](assets/wallpapers/README.md)，未来可以用于其他网站。
 
 ## 自定义背景图片
 
 可以使用自己的图片、插画、摄影作品当作背景，也能叠加渐变、调整透明度和背景位置。
 
-编辑 [Dreamy Glass](themes/chatgpt/dreamy-glass.user.css) 中的配置：
-
-```css
---cg-wallpaper-image: none;
-```
-
-替换为：
-
-```css
---cg-wallpaper-image: url("https://example.com/my-wallpaper.jpg");
-```
-
-把示例地址改成**浏览器能直接访问的图片地址**。使用 `none` 时仍显示默认渐变。
+在 ChatGPT 中直接安装上面的四套壁纸主题，**无需手动替换图片地址**。如果将来需要使用第五张私人图片，可复制任一壁纸主题，修改 `--lite-wallpaper` 的 `url(...)`（必须是可直接访问的图片链接）。
 
 如果需要让仓库存储壁纸，可以把图片上传到 `assets/wallpapers/`，然后使用公开 GitHub Raw 图片地址。**当前仓库是公开的，不要上传私人照片、敏感图片或未经授权的作品。**
 
