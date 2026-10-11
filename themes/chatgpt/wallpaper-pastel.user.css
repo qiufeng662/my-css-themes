@@ -1,64 +1,155 @@
 /* ==UserStyle==
-@name           ChatGPT Lite - Pastel Gradient (Lite)
+@name           ChatGPT Unified Lite — Pastel Gradient
 @namespace      github.com/qiufeng662/my-css-themes/chatgpt/wallpaper-pastel
-@version        2.0.0
-@description    Lightweight ChatGPT theme for Edge and Stylus. No blur, animations, or expensive general selectors.
+@version        2.1.0
+@description    Unified lightweight ChatGPT theme. Matched sidebar, soft reading cards and integrated composer. Edge + Stylus.
 @author         qiufeng662
 @homepageURL    https://github.com/qiufeng662/my-css-themes
 @updateURL      https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/themes/chatgpt/wallpaper-pastel.user.css
 ==/UserStyle== */
 
-/* Install ONE ChatGPT theme at a time. Switch other ChatGPT styles off first. */
+/*
+ * Unified Lite v2.1: designed around an October 2026 ChatGPT screenshot.
+ * Install only ONE ChatGPT theme at a time. Recommended: ChatGPT Light mode.
+ * No backdrop-filter, filter blur, :has(), global button overrides, or animations.
+ */
 @-moz-document domain("chatgpt.com"), domain("chat.openai.com") {
   :root {
-    --lite-wallpaper: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp");
-    --lite-overlay: rgba(255, 255, 255, 0.12);
-    --lite-sidebar: rgba(255, 255, 255, 0.90);
-    --lite-card: rgba(255, 255, 255, 0.86);
-    --lite-border: rgba(155, 137, 194, 0.18);
+    --mt-wallpaper: url("https://raw.githubusercontent.com/qiufeng662/my-css-themes/main/assets/wallpapers/pastel-gradient.webp");
+    --mt-wash: rgba(250,247,255,.30);
+    --mt-sidebar: rgba(241,235,252,.97);
+    --mt-sidebar-secondary: rgba(232,223,248,.96);
+    --mt-page: rgba(252,249,255,.80);
+    --mt-chat: rgba(255,253,255,.82);
+    --mt-composer: rgba(255,252,255,.97);
+    --mt-user: rgba(239,223,252,.94);
+    --mt-accent: #8c79b5;
+    --mt-text: #302c3b;
+    --mt-muted: #6a6475;
+    --mt-border: rgba(119, 101, 155, .17);
 
-    /* Site-specific surface tokens; no global button/form restyling. */
+    /* Match existing ChatGPT surface tokens rather than styling every div. */
     --main-surface-primary: transparent;
-    --sidebar-surface-primary: var(--lite-sidebar);
-    --sidebar-surface-secondary: rgba(245, 241, 253, 0.94);
+    --sidebar-surface-primary: var(--mt-sidebar);
+    --sidebar-surface-secondary: var(--mt-sidebar-secondary);
+    --composer-surface-primary: var(--mt-composer);
+    --message-surface: var(--mt-user);
   }
 
+  /* One calm visual canvas. A flat wash is cheaper than real-time blur. */
   html {
-    background-color: #eeeaf6 !important;
+    background-color: #f1ecf8 !important;
   }
 
   body {
-    background-color: #eeeaf6 !important;
-    background-image: linear-gradient(var(--lite-overlay), var(--lite-overlay)), var(--lite-wallpaper) !important;
-    background-size: cover, cover !important;
-    background-position: center center, center center !important;
-    background-repeat: no-repeat, no-repeat !important;
-    background-attachment: fixed, fixed !important;
+    background-color: #f1ecf8 !important;
+    background-image:
+      linear-gradient(var(--mt-wash), var(--mt-wash)),
+      var(--mt-wallpaper) !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    color: var(--mt-text);
   }
 
-  #__next, #root, main, [role="main"],
+  /* Let the wallpaper show behind content without whitening the whole canvas. */
+  #__next, #root, #thread, main, [role="main"],
   .bg-token-main-surface-primary {
     background-color: transparent !important;
   }
 
-  [data-testid="sidebar"], #stage-slideover-sidebar {
-    background-color: var(--lite-sidebar) !important;
-    border-right: 1px solid var(--lite-border) !important;
+  /* Sidebar: softly tinted to belong to the same palette as the wallpaper. */
+  #stage-slideover-sidebar,
+  [data-testid="sidebar"],
+  .bg-token-sidebar-surface-primary {
+    background-color: var(--mt-sidebar) !important;
   }
 
+  #stage-slideover-sidebar,
+  [data-testid="sidebar"] {
+    border-right: 1px solid var(--mt-border) !important;
+  }
+
+  .bg-token-sidebar-surface-secondary {
+    background-color: var(--mt-sidebar-secondary) !important;
+  }
+
+  /* Subtle chrome: top header and menus. Only target known chrome regions. */
+  #page-header,
+  [data-testid="page-header"] {
+    background-color: var(--mt-page) !important;
+    border-bottom: 1px solid var(--mt-border) !important;
+  }
+
+  [role="menu"], [role="listbox"] {
+    background-color: var(--mt-composer) !important;
+    border-color: var(--mt-border) !important;
+  }
+
+  /* Reading comfort: light panels directly behind message text.
+     Keeps the wallpaper visible at the edges and between messages. */
   [data-message-author-role="assistant"] {
-    background-color: var(--lite-card) !important;
+    background-color: var(--mt-chat) !important;
+    border: 1px solid rgba(255,255,255,.56) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 2px 9px rgba(69,55,94,.055) !important;
+    padding: 14px 18px !important;
+    margin-block: 5px 10px !important;
+    color: var(--mt-text);
+  }
+
+  /* The existing user bubble stays distinct but shares the same palette. */
+  [data-message-author-role="user"] .bg-token-message-surface,
+  [data-message-author-role="user"] .bg-token-message-surface-primary {
+    background-color: var(--mt-user) !important;
+    border: 1px solid rgba(255,255,255,.45) !important;
+    box-shadow: 0 2px 6px rgba(69,55,94,.045) !important;
+  }
+
+  /* Bottom: remove the hard white strip and use a gentle fade into the canvas. */
+  #thread-bottom-container {
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0) 0%,
+      var(--mt-page) 62%,
+      var(--mt-page) 100%
+    ) !important;
+  }
+
+  #thread-bottom-container::before,
+  #thread-bottom-container::after {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
+  #thread-bottom-container .bg-token-main-surface-primary {
+    background-color: transparent !important;
+  }
+
+  /* Prompt area: glass-like appearance via opacity, not expensive blur. */
+  #composer-background,
+  [data-testid="composer"] {
+    background-color: var(--mt-composer) !important;
+    border: 1px solid var(--mt-border) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 4px 15px rgba(63,48,96,.09) !important;
+  }
+
+  /* Small details instead of globally restyling buttons and inputs. */
+  [data-message-author-role="assistant"] pre {
+    border: 1px solid var(--mt-border) !important;
     border-radius: 12px !important;
   }
 
-  [data-message-author-role="user"] .bg-token-message-surface {
-    background-color: rgba(224, 210, 251, 0.90) !important;
+  [data-message-author-role="assistant"] blockquote {
+    border-color: var(--mt-accent) !important;
   }
 
-  #composer-background, [data-testid="composer"] {
-    background-color: rgba(255, 255, 255, 0.94) !important;
-    border: 1px solid var(--lite-border) !important;
+  @media (max-width: 640px) {
+    [data-message-author-role="assistant"] {
+      padding: 10px 12px !important;
+      border-radius: 13px !important;
+    }
   }
-
-  /* Performance: intentionally NO backdrop-filter, :has(), or animations. */
 }
